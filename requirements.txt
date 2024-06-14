@@ -1,0 +1,8 @@
+streamlit==1.8.1
+PIL==9.4.0
+keras==2.15.0
+numpy==1.25.2
+torch==2.0.0
+torchvision==0.18.0
+matplotlib==3.7.1
+Image==9.4.0
