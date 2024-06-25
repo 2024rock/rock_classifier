@@ -1,4 +1,4 @@
-from Pillow import Image
+from PIL import Image
 
 from keras import models
 from keras.models import model_from_json
