@@ -46,8 +46,8 @@ if img_file is not None:
             pie_labels.append("others")
             pie_probs.append(others_prob)
 
-        filtered_labels = [label for label, prob in zip(pie_labels, pie_probs) if prob > 0]
-        filtered_probs = [prob for prob in pie_probs if prob > 0]
+        filtered_labels = []
+        filtered_probs = []
 
         #---------------------------------------------------------------------------
 
