@@ -45,13 +45,13 @@ if img_file is not None:
         filtered_probs = [prob for prob in pie_probs if prob > 0]
 
         n_top = 3
-        others_prob = sum(filtered_probs[n_top:])
+        others_prob = sum(filtered_probs)
         if others_prob > 0:
-            filtered_labels = filtered_labels[:n_top] + ["others"]
-            filtered_probs = filtered_probs[:n_top] + [others_prob]
+            filtered_labels = filtered_labels + ["others"]
+            filtered_probs = filtered_probs + [others_prob]
         else:
-            filtered_labels = filtered_labels[:n_top]
-            filtered_probs = filtered_probs[:n_top]
+            filtered_labels = filtered_labels#[:n_top]
+            filtered_probs = filtered_probs#[:n_top]
         #---------------------------------------------------------------------------
 
         fig, ax = plt.subplots()
