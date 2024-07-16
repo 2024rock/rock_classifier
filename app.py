@@ -49,6 +49,10 @@ if img_file is not None:
         filtered_labels = []
         filtered_probs = []
 
+        for label, prob in zip(pie_labels, pie_probs):
+            if prob > 0:
+                filtered_labels.append(label)
+                filtered_probs.append(prob)
         #---------------------------------------------------------------------------
 
         fig, ax = plt.subplots()
