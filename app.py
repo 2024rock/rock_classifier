@@ -32,9 +32,11 @@ if img_file is not None:
         n_top = 3
 
         #円グラフの表示
-        pie_labels = [result[1] for result in results[:n_top]]
+        pie_labels = [result[1] for result in results]
+        #pie_labels = [result[1] for result in results[:n_top]]
         #pie_labels.append("others")#その他
-        pie_probs = [result[2] for result in results[:n_top]]
+        pie_probs = [result[2] for result in results]
+        #pie_probs = [result[2] for result in results[:n_top]]
         #pie_probs.append(sum([result[2] for result in results[n_top:]])) #その他
 
         # 0％の確率を持つ要素を削除--------------------------------------------------
