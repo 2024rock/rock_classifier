@@ -29,10 +29,7 @@ if img_file is not None:
         for result in results[:n_top]:
             st.write(str(round(result[2]*100,2)) + "%の確率で" + result[0] + "です。")
 
-        # results のサンプルデータ-----------------------------------------------------------------------
-
         n_top = 3
-        #------------------------------------------------------------------------------------------------
 
         #円グラフの表示
         pie_labels = [result[1] for result in results[:n_top]]
@@ -41,18 +38,14 @@ if img_file is not None:
         #pie_probs.append(sum([result[2] for result in results[n_top:]])) #その他
 
         # 0％の確率を持つ要素を削除--------------------------------------------------
-        others_prob = sum(result[2] for result in results[n_top:])
+        n_top = 3
+        others_prob = sum(filtered_probs[n_top:])
         if others_prob > 0:
-            pie_labels.append("others")
-            pie_probs.append(others_prob)
-
-        filtered_labels = []
-        filtered_probs = []
-
-        for label, prob in zip(pie_labels, pie_probs):
-            if prob > 0:
-                filtered_labels.append(label)
-                filtered_probs.append(prob)
+            filtered_labels = filtered_labels[:n_top] + ["others"]
+            filtered_probs = filtered_probs[:n_top] + [others_prob]
+        else:
+            filtered_labels = filtered_labels[:n_top]
+            filtered_probs = filtered_probs[:n_top]
         #---------------------------------------------------------------------------
 
         fig, ax = plt.subplots()
