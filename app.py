@@ -29,6 +29,11 @@ if img_file is not None:
         for result in results[:n_top]:
             st.write(str(round(result[2]*100,2)) + "%の確率で" + result[0] + "です。")
 
+        # results のサンプルデータ-----------------------------------------------------------------------
+        results = [(1, 'Label1', 0.5), (2, 'Label2', 0.3), (3, 'Label3', 0.2), (4, 'Label4', 0.0)]
+        n_top = 3
+        #------------------------------------------------------------------------------------------------
+
         #円グラフの表示
         pie_labels = [result[1] for result in results[:n_top]]
         pie_labels.append("others")#その他
