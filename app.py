@@ -34,6 +34,17 @@ if img_file is not None:
         pie_labels.append("others")#その他
         pie_probs = [result[2] for result in results[:n_top]]
         pie_probs.append(sum([result[2] for result in results[n_top:]])) #その他
+
+        # 0％の確率を持つ要素を削除--------------------------------------------------
+        filtered_labels = []
+        filtered_probs = []
+
+        for label, prob in zip(pie_labels, pie_probs):
+            if prob > 0:
+                filtered_labels.append(label)
+                filtered_probs.append(prob)
+        #---------------------------------------------------------------------------
+
         fig, ax = plt.subplots()
         wedgeprops={"width":0.3, "edgecolor":"white"}
         textprops = {"fontsize":6}
