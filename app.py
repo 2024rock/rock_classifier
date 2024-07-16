@@ -38,6 +38,10 @@ if img_file is not None:
         #pie_probs.append(sum([result[2] for result in results[n_top:]])) #その他
 
         # 0％の確率を持つ要素を削除--------------------------------------------------
+        # Filter out labels and probabilities with 0% probability
+        filtered_labels = [label for label, prob in zip(pie_labels, pie_probs) if prob > 0]
+        filtered_probs = [prob for prob in pie_probs if prob > 0]
+
         n_top = 3
         others_prob = sum(filtered_probs[n_top:])
         if others_prob > 0:
