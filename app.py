@@ -30,24 +30,31 @@ if img_file is not None:
             st.write(str(round(result[2]*100,2)) + "%の確率で" + result[0] + "です。")
 
         # results のサンプルデータ-----------------------------------------------------------------------
-        results = [(1, 'Label1', 0.5), (2, 'Label2', 0.3), (3, 'Label3', 0.2), (4, 'Label4', 0.0)]
+        results = [
+            (1, 'Label1', 0.15),
+            (2, 'Label2', 0.25),
+            (3, 'Label3', 0.30),
+            (4, 'Label4', 0.10),
+            (5, 'Label5', 0.20)
+        ]
         n_top = 3
         #------------------------------------------------------------------------------------------------
 
         #円グラフの表示
         pie_labels = [result[1] for result in results[:n_top]]
-        pie_labels.append("others")#その他
+        #pie_labels.append("others")#その他
         pie_probs = [result[2] for result in results[:n_top]]
-        pie_probs.append(sum([result[2] for result in results[n_top:]])) #その他
+        #pie_probs.append(sum([result[2] for result in results[n_top:]])) #その他
 
         # 0％の確率を持つ要素を削除--------------------------------------------------
-        filtered_labels = []
-        filtered_probs = []
+        others_prob = sum(result[2] for result in results[n_top:])
+        if others_prob > 0:
+            pie_labels.append("others")
+            pie_probs.append(others_prob)
 
-        for label, prob in zip(pie_labels, pie_probs):
-            if prob > 0:
-                filtered_labels.append(label)
-                filtered_probs.append(prob)
+        filtered_labels = [label for label, prob in zip(pie_labels, pie_probs) if prob > 0]
+        filtered_probs = [prob for prob in pie_probs if prob > 0]
+
         #---------------------------------------------------------------------------
 
         fig, ax = plt.subplots()
