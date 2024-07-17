@@ -26,7 +26,8 @@ if img_file is not None:
         #結果の表示
         st.subheader("判定結果")
         n_top = 3#確率が高い順に3つまで返す
-        for result in results[:n_top]:
+        #for result in results[:n_top]:
+        for result in results:
             st.write(str(round(result[2]*100,2)) + "%の確率で" + result[0] + "です。")
 
         n_top = 3
@@ -41,17 +42,14 @@ if img_file is not None:
 
         # 0％の確率を持つ要素を削除--------------------------------------------------
         # Filter out labels and probabilities with 0% probability
-        filtered_labels = [label for label, prob in zip(pie_labels, pie_probs) if prob > 0]
-        filtered_probs = [prob for prob in pie_probs if prob > 0]
+        filtered_labels = [label for label, prob in zip(pie_labels, pie_probs) if prob >= 0.0001]
+        filtered_probs = [prob for prob in pie_probs if prob >= 0.0001]
 
-        n_top = 3
-        others_prob = sum(filtered_probs)
+        others_prob = sum(prob for prob in pie_probs if prob < 0.0001)
         if others_prob > 0:
-            filtered_labels = filtered_labels + ["others"]
-            filtered_probs = filtered_probs + [others_prob]
-        else:
-            filtered_labels = filtered_labels#[:n_top]
-            filtered_probs = filtered_probs#[:n_top]
+             filtered_labels.append("others")
+             filtered_probs.append(others_prob)
+            
         #---------------------------------------------------------------------------
 
         fig, ax = plt.subplots()
