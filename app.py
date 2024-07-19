@@ -56,7 +56,7 @@ if img_file is not None:
         fig, ax = plt.subplots()
         wedgeprops={"width":0.3, "edgecolor":"white"}
         textprops = {"fontsize":6}
-        ax.pie(pie_probs, labels=filered_labels, counterclock=False, startangle=90,textprops=textprops, autopct="%.2f",wedgeprops=wedgeprops) #円グラフ
+        ax.pie(pie_probs, labels=filtered_labels, counterclock=False, startangle=90,textprops=textprops, autopct="%.2f",wedgeprops=wedgeprops) #円グラフ
         st.pyplot(fig)
 
         st.sidebar.write("")
