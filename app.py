@@ -46,10 +46,10 @@ if img_file is not None:
             filtered_labels = [label for label, prob in zip(pie_labels, pie_probs) if prob >= 0.0001]
             filtered_probs = [prob for prob in pie_probs if prob >= 0.0001]
 
-        others_prob = sum(prob for prob in pie_probs if prob < 0.0001)
-        if others_prob > 0:
-             filtered_labels.append("others")
-             filtered_probs.append(others_prob)
+        #others_prob = sum(prob for prob in pie_probs if prob < 0.0001)
+        #if others_prob > 0:
+        #     filtered_labels.append("others")
+        #     filtered_probs.append(others_prob)
 
         #---------------------------------------------------------------------------
 
