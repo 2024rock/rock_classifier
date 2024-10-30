@@ -6,4 +6,5 @@ torch==2.0.0
 torchvision==0.15.1
 matplotlib==3.7.1
 tensorflow==2.15.0
-protobuf==3.20.*
+protobuf==3.20.3
+altair==4.1.0
